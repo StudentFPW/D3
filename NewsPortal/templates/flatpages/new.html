@@ -14,7 +14,7 @@
 {% block content %}
 
     {% if news.article_or_news == "NW" %}
-        <h1>{{ news.header }}</h1>
+        <h1>{{ news.header|censor }}</h1>
         <hr>
         <h5>{{ news.datetime|post_time }}</h5>
         <h5>{{ news.text|censor }}</h5>

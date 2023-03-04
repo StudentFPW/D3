@@ -14,7 +14,7 @@
 {% block content %}
 
     {% if article.article_or_news == "AT" %}
-        <h1>{{ article.header }}</h1>
+        <h1>{{ article.header|censor }}</h1>
         <hr>
         <h5>{{ article.datetime|post_time }}</h5>
         <h5>{{ article.text|censor }}</h5>
