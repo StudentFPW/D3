@@ -1,0 +1,47 @@
+{% extends 'flatpages/index.html' %}
+
+<!--C:\Users\root\D3\NewsPortal\news\templatetags-->
+{% load custom_filter1 %}
+{% load custom_filter2 %}
+
+{% load custom_filter3 %}
+
+{% block title %}
+    NewsPortal
+{% endblock title %}
+
+{% block allpost %}
+    {{article|length}}
+{% endblock allpost %}
+
+{% block content %}
+
+    <hr>
+    <h2>Все статьи</h2>
+    <hr>
+
+    {% if article %}
+        {% for info in article %}
+            {% if info.article_or_news == "AT" %}
+                <table class="editorDemoTable" style="margin-left: auto; margin-right: auto;">
+                    <tbody>
+                        <tr>
+                            <td><strong>Заголовок</strong></td>
+                            <td><strong>Дата публикации</strong></td>
+                            <td><strong>Содержание</strong></td>
+                        </tr>
+                        <tr>
+                            <td>{{ info.header|truncatechars:10 }}</td>
+                            <td>{{ info.datetime|post_time }}</td>
+                            <td><h5>{{ info.text|truncatechars:20 }}</h5></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <hr>
+            {% endif %}
+        {% endfor %}
+    {% else %}
+        <h2>Постов нет (👉ﾟヮﾟ)👉</h2>
+    {% endif %}
+
+{% endblock content %}
